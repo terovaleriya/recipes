@@ -25,27 +25,24 @@ class Planing:
         self.level = level
         self.servings = servings
 
+    def __repr__(self):
+        return "Prep: " + self.prep + "\n" + "Cook: " + self.cook + "\n" + "Level: " + self.level + "\n" + "Servings: " + self.servings
+
 
 class Recipe:
     def __init__(self, title: str, author: str, planning: Planing, tip: str, ingredients: List[Ingredient],
                  instructions: List[Instruction],
-                 nutritions: Dict):
+                 nutrition: Dict):
         self.title = title
         self.author = author
         self.planning = planning
         self.tip = tip
-        self.nutritions = nutritions
+        self.nutrition = nutrition
         self.ingredients = ingredients
         self.instructions = instructions
 
-# class Nutrition:
-#     def __init__(self, kcal: int, fat: int, saturates: int, carbs: int, sugars: int, fibre: int, protein: int,
-#                  salt: int):
-#         self.kcal = kcal
-#         self.fat = fat
-#         self.saturates = saturates
-#         self.carbs = carbs
-#         self.sugars = sugars
-#         self.fibre = fibre
-#         self.protein = protein
-#         self.salt = salt
+    def __repr__(self):
+        return "\n" + self.title + "\n" + self.author + "\n\n" + str(
+            self.planning) + "\n\n" + self.tip + "\n\n" + '\n'.join(
+            [str(i) for i in self.ingredients]) + "\n\n" + '\n'.join(
+            [str(i) for i in self.instructions]) + "\n\n" + "\n".join(": ".join(x) for x in self.nutrition.items())
