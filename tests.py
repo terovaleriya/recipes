@@ -1,8 +1,8 @@
 import json
 import unittest
 
+from parser import Parser
 from recipe import *
-from scrape import Parser
 
 url_chilli = 'https://www.bbcgoodfood.com/recipes/meatball-black-bean-chilli'
 
@@ -20,22 +20,21 @@ class TestParser_chilli(unittest.TestCase):
         my_recipe = Recipe("Meatball black bean chilli",
                            "By Esther Clark", Planing("10 mins", "30 mins", "Easy", "4"),
                            "Double the amounts for this one-pot black bean chilli, then freeze the leftovers for busy days. It tastes just as great reheated as it does freshly cooked",
-                           [Ingredient('2 tbsp olive oil'), Ingredient('12 beef meatballs'), Ingredient('1 onion'),
-                            Ingredient('finely sliced'),
-                            Ingredient('2 mixed peppers, sliced'), Ingredient('½ large bunch coriander'),
-                            Ingredient('leaves and stalks chopped'),
+                           [Ingredient('2 tbsp olive oil'), Ingredient('12 beef meatballs'),
+                            Ingredient('1 onion, finely sliced'),
+                            Ingredient('2 mixed peppers, sliced'),
+                            Ingredient('½ large bunch coriander, leaves and stalks chopped'),
                             Ingredient('2 large garlic cloves, crushed'), Ingredient('1 tsp hot smoked paprika'),
                             Ingredient('2 tsp ground cumin'),
                             Ingredient('1 heaped tbsp light brown soft sugar'),
                             Ingredient('2 x 400g cans chopped tomatoes'),
                             Ingredient('2 x 400g cans black beans, drained and rinsed'),
                             Ingredient('cooked rice, to serve')],
-                           [Instruction(1,
-                                        "Heat the oil in a large flameproof casserole dish over a medium heat. Fry the meatballs for 5 mins until browned, then transfer to a plate with a slotted spoon."),
-                            Instruction(2,
-                                        "Fry the onion and peppers with a pinch of salt for 7 mins. Add the coriander stalks, garlic, paprika and cumin and fry for 1 min more. Tip in the sugar, tomatoes and beans, and bring to a simmer. Season, return the meatballs to the pan and cook, covered, for 15 mins. To freeze, leave to cool completely and transfer to large freezerproof bags."),
-                            Instruction(3,
-                                        "Serve the chilli with the rice and the coriander leaves scattered over.")],
+                           [Instruction(
+                               "Heat the oil in a large flameproof casserole dish over a medium heat. Fry the meatballs for 5 mins until browned, then transfer to a plate with a slotted spoon."),
+                               Instruction(
+                                   "Fry the onion and peppers with a pinch of salt for 7 mins. Add the coriander stalks, garlic, paprika and cumin and fry for 1 min more. Tip in the sugar, tomatoes and beans, and bring to a simmer. Season, return the meatballs to the pan and cook, covered, for 15 mins. To freeze, leave to cool completely and transfer to large freezerproof bags."),
+                               Instruction("Serve the chilli with the rice and the coriander leaves scattered over.")],
                            {'kcal': '423', 'fat': '16g', 'saturates': '4g', 'carbs': '36g', 'sugars': '21g',
                             'fibre': '14g', 'protein': '24g', 'salt': '1.1g'}
                            )
@@ -70,11 +69,11 @@ class TestParser_chilli(unittest.TestCase):
                              {"item": "2 x 400g cans chopped tomatoes"}, {
                                  "item": "2 x 400g cans black beans, drained and rinsed"},
                              {"item": "cooked rice, to serve"}], "instructions": [
-                {"step": 1,
-                 "todo": "Heat the oil in a large flameproof casserole dish over a medium heat. Fry the meatballs for 5 mins until browned, then transfer to a plate with a slotted spoon."},
-                {"step": 2,
-                 "todo": "Fry the onion and peppers with a pinch of salt for 7 mins. Add the coriander stalks, garlic, paprika and cumin and fry for 1 min more. Tip in the sugar, tomatoes and beans, and bring to a simmer. Season, return the meatballs to the pan and cook, covered, for 15 mins. To freeze, leave to cool completely and transfer to large freezerproof bags."},
-                {"step": 3, "todo": "Serve the chilli with the rice and the coriander leaves scattered over."}]})
+                {
+                    "to_do": "Heat the oil in a large flameproof casserole dish over a medium heat. Fry the meatballs for 5 mins until browned, then transfer to a plate with a slotted spoon."},
+                {
+                    "to_do": "Fry the onion and peppers with a pinch of salt for 7 mins. Add the coriander stalks, garlic, paprika and cumin and fry for 1 min more. Tip in the sugar, tomatoes and beans, and bring to a simmer. Season, return the meatballs to the pan and cook, covered, for 15 mins. To freeze, leave to cool completely and transfer to large freezerproof bags."},
+                {"to_do": "Serve the chilli with the rice and the coriander leaves scattered over."}]})
         self.assertEqual(jsonStr, my_jsonStr)
 
 

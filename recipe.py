@@ -1,6 +1,8 @@
 from typing import List, Dict
 
 
+# as for now it's actually just a string, it's made just for the sake of generality
+# perhaps we could parse it further into `unit` and `product`
 class Ingredient:
     def __init__(self, item: str):
         self.item = item
@@ -9,13 +11,13 @@ class Ingredient:
         return self.item
 
 
+# same
 class Instruction:
-    def __init__(self, step: int, todo: str):
-        self.step = step
-        self.todo = todo
+    def __init__(self, to_do: str):
+        self.to_do = to_do
 
     def __repr__(self):
-        return "Step #" + str(self.step) + ": " + self.todo
+        return self.to_do
 
 
 class Planing:
@@ -41,8 +43,11 @@ class Recipe:
         self.ingredients = ingredients
         self.instructions = instructions
 
+    # just fancy way to print it
+    # Check it out by uncommenting line #8 in `main.py`!!
     def __repr__(self):
         return "\n" + self.title + "\n" + self.author + "\n\n" + str(
             self.planning) + "\n\n" + self.tip + "\n\n" + '\n'.join(
             [str(i) for i in self.ingredients]) + "\n\n" + '\n'.join(
-            [str(i) for i in self.instructions]) + "\n\n" + "\n".join(": ".join(x) for x in self.nutrition.items())
+            ["Step #" + str(i + 1) + ": " + str(x) for i, x in enumerate(self.instructions)]) + "\n\n" + "\n".join(
+            ": ".join(x) for x in self.nutrition.items())
