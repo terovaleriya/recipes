@@ -13,6 +13,9 @@
   
 - Тесты! Очень банальная штука, проверяем соответствие всего что можно на данном в задании url, чтобы избежать совсем уж неприятных ситуаций.
 
+
+### Ну и главное: 
+
 <p align="center">
   <img src="https://pics.onsizzle.com/interviewer-how-much-you-love-food-bhukkad-31426743.png" />
 </p>
