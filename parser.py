@@ -59,8 +59,6 @@ class Parser:
     # getting json out of parsed Recipe
     def get_json(self, url: str):
         recipe = self.parse_html(url)
-        # for a prettier print-look add `indent=4`
-        # don't forget that it will cause some tests to fail (you should change it there too)
         with open('recipe_json.txt', 'w') as outfile:
             json.dump(recipe.__dict__, outfile, default=lambda o: o.__dict__, ensure_ascii=False, indent=4)
         return json.dumps(recipe.__dict__, default=lambda o: o.__dict__, ensure_ascii=False)
