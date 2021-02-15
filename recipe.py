@@ -44,7 +44,6 @@ class Recipe:
         self.instructions = instructions
 
     # just fancy way to print it
-    # Check it out by uncommenting line #8 in `main.py`!!
     def __repr__(self):
         return "\n" + self.title + "\n" + self.author + "\n\n" + str(
             self.planning) + "\n\n" + self.tip + "\n\n" + '\n'.join(
